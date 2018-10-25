@@ -120,8 +120,9 @@ private:
 
 		int kTimeoutMs = 10;
 		//Drive settings
-		rDrive2->Set(ControlMode::Follower, 3);
-		lDrive2->Set(ControlMode::Follower, 10);
+		rDrive2->Set(ControlMode::Follower, rDrive1Address); // Follow the right drive
+		lDrive2->Set(ControlMode::Follower, lDrive1Address); // Follow the left drive
+
 		lDrive1->ConfigContinuousCurrentLimit(40, kTimeoutMs);
 		lDrive2->ConfigContinuousCurrentLimit(40, kTimeoutMs);
 		rDrive1->ConfigContinuousCurrentLimit(40, kTimeoutMs);
@@ -129,8 +130,8 @@ private:
 		lift1->ConfigContinuousCurrentLimit(40, kTimeoutMs);
 		lift2->ConfigContinuousCurrentLimit(40, kTimeoutMs);
 		lift3->ConfigContinuousCurrentLimit(40, kTimeoutMs);
-		lift2->Set(ControlMode::Follower, 4);
-		lift3->Set(ControlMode::Follower, 4);
+		lift2->Set(ControlMode::Follower, lift1Address);
+		lift3->Set(ControlMode::Follower, lift1Address);
 		rDrive1->SetInverted(true);
 		rDrive2->SetInverted(true);
 		lDrive1->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,
