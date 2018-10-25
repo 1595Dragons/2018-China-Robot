@@ -13,18 +13,21 @@ private:
 	int kTimeoutMs = 10;
 
 	// Get the CAN bus addresses for the motors
-	int lift1Address,
-	lift2Address,
-	lift3Address,
-	wristAddress,
-	lDrive1Address,
-			lDrive2Address,
-			rDrive1Address,
-			rDrive2Address,
-			lIntakeAddress,
-			rIntakeAddress,
-			DriverJoystickAddress,
-			OperatorJoystickAddress;
+	// 7 is either wrist or one of the intakes, same with 11 and 8
+	int lift1Address = 5,
+			lift2Address = 6,
+			lift3Address = 4,
+			wristAddress = 11,
+			lDrive1Address = 3, // Has encoder
+			lDrive2Address = 2,
+			rDrive1Address = 10, // Has encoder
+			rDrive2Address = 9,
+			lIntakeAddress = 8,
+			rIntakeAddress = 7,
+			DriverJoystickAddress = 0,
+			OperatorJoystickAddress = 1;
+
+	// TODO: When turning some of the drive motors move incorrectly...
 
 	TalonSRX * lift1 = new TalonSRX(lift1Address);
 	TalonSRX * lift2 = new TalonSRX(lift2Address);
@@ -146,14 +149,14 @@ private:
 		//rIntake->SetInverted(true);
 		wrist->SetInverted(true);
 		/*
-		try {
-			ahrs = new AHRS(I2C::Port::kMXP);
-		} catch (std::exception& ex) {
-			std::string err_string = "Error instantiating navX MXP:  ";
-			err_string += ex.what();
-			DriverStation::ReportError(err_string.c_str());
-		}
-		*/
+		 try {
+		 ahrs = new AHRS(I2C::Port::kMXP);
+		 } catch (std::exception& ex) {
+		 std::string err_string = "Error instantiating navX MXP:  ";
+		 err_string += ex.what();
+		 DriverStation::ReportError(err_string.c_str());
+		 }
+		 */
 	}
 
 	void AutonomousInit() {
