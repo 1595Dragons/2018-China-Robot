@@ -325,7 +325,7 @@ private:
 	}
 
 	void TeleopPeriodic() {
-		drLY = dr->GetRawAxis(1);
+		drLY =  -1 * dr->GetRawAxis(1);
 
 		drRX = dr->GetRawAxis(4);
 
